@@ -1,68 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capítulo aleatorio de la Biblia</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Nombre por Número</title>
 </head>
 <body>
-  <h1>Capítulo aleatorio de la Biblia</h1>
+    <h1>Buscar Nombre por Número</h1>
+    <form id="buscarForm">
+        <label for="numero1">1</label>
+        <label for="numero2">2</label>
+        <label for="numero3">3</label>
+        <label for="numero4">4</label>
+        <label for="numero5">5</label>
+        <label for="numero6">6</label>
+        <label for="numero7">7</label>
+        <label for="numero8">8</label>
+        <label for="numero9">9</label>
+        <label for="numero10">10</label>
 
-  <div id="bible-chapter"></div>
+        <input type="radio" id="numero1" name="numero" value="Juan">
+        <input type="radio" id="numero2" name="numero" value="María">
+        <input type="radio" id="numero3" name="numero" value="Pedro">
+        <input type="radio" id="numero4" name="numero" value="Ana">
+        <input type="radio" id="numero5" name="numero" value="Luis">
+        <input type="radio" id="numero6" name="numero" value="Sofía">
+        <input type="radio" id="numero7" name="numero" value="Carlos">
+        <input type="radio" id="numero8" name="numero" value="Laura">
+        <input type="radio" id="numero9" name="numero" value="Miguel">
+        <input type="radio" id="numero10" name="numero" value="Isabel">
 
-  <script>
-   function getRandomChapter() {
-  // Obtenemos la lista de libros de la Biblia
-  const books = [
-    "Génesis", "Éxodo", "Levítico", "Números", "Deuteronomio", "Josué", "Jueces", "Rut", "1 Samuel", "2 Samuel", "1 Reyes", "2 Reyes", 
-    "1 Crónicas", "2 Crónicas", "Esdras", "Nehemías", "Ester", "Job", "Salmos", "Proverbios", "Eclesiastés", "Cantar de los Cantares", 
-    "Isaías", "Jeremías", "Lamentaciones", "Ezequiel", "Daniel", "Oseas", "Joel", "Amós", "Abdías", "Jonás", "Miqueas", "Nahúm", 
-    "Habacuc", "Sofonías", "Hageo", "Zacarías", "Malaquías",
-    "Mateo", "Marcos", "Lucas", "Juan", "Hechos", "Romanos", "1 Corintios", "2 Corintios", "Gálatas", "Efesios", "Filipenses", "Colosenses",
-    "1 Tesalonicenses", "2 Tesalonicenses", "1 Timoteo", "2 Timoteo", "Tito", "Filemón", "Hebreos", "Santiago", "1 Pedro", "2 Pedro", 
-    "1 Juan", "2 Juan", "3 Juan", "Judas", "Apocalipsis"
-  ];
+        <button type="submit">Buscar</button>
+    </form>
+    <p id="resultado"></p>
 
-  // Obtenemos la lista de números de capítulos de cada libro
-  const chapterCounts = [50, 40, 27, 36, 34, 24, 21, 4, 31, 24, 22, 25, 29, 36, 10, 13, 10, 42, 150, 31, 12, 8, 66, 52, 5, 48, 12, 14, 3, 9, 1, 4, 7, 3, 3, 3, 2, 14, 4, 28, 16, 24, 21, 28, 16, 13, 6, 6, 4, 4, 5, 3, 6, 4, 3, 2, 14, 4, 28, 16, 13, 6, 6, 4, 5, 3, 6, 4, 3, 1, 22];
+    <style>
+        /* Ocultar los radios y labels */
+        input[type="radio"] {
+            display: none;
+        }
 
-  // Calculamos el número total de capítulos en la Biblia
-  const totalChaptersInBible = chapterCounts.reduce((total, count) => total + count, 0);
+        /* Estilo para los labels */
+        label {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #ccc;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
 
-  // Generamos un número aleatorio entre 0 y 1
-  const randomProbability = Math.random();
-
-  // Inicializamos variables para realizar la selección
-  let selectedBook = "";
-  let cumulativeProbability = 0;
-
-  // Iteramos sobre los libros y seleccionamos uno en función de las probabilidades
-  for (let i = 0; i < books.length; i++) {
-    const probability = chapterCounts[i] / totalChaptersInBible;
-    cumulativeProbability += probability;
-
-    if (randomProbability <= cumulativeProbability) {
-      selectedBook = books[i];
-      break;
-    }
-  }
-
-  // Obtenemos el número de capítulos del libro seleccionado
-  const bookLength = chapterCounts[books.indexOf(selectedBook)];
-
-  // Generamos un número aleatorio entre 1 y el número de capítulos del libro seleccionado
-  const randomChapterNumber = Math.floor(Math.random() * bookLength) + 1;
-
-  // Obtenemos el texto del capítulo aleatorio
-  const chapterText = `<p>${selectedBook} ${randomChapterNumber}</p>`;
-
-  // Mostramos el texto del capítulo aleatorio
-  document.getElementById("bible-chapter").innerHTML = chapterText;
-}
-
-// Llamamos a la función getRandomChapter() cuando la página se carga
-window.addEventListener("load", getRandomChapter);
-
-  </script>
+        /* Estilo para los radios seleccionados */
+        input[type="radio"]:checked + label {
+            background-color: #ffcc00;
+        }
+    </style>
 </body>
 </html>
