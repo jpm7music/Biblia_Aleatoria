@@ -4,56 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Nombre por Número</title>
-</head>
-<body>
-    <h1>Buscar Nombre por Número</h1>
-    <form id="buscarForm">
-        <label for="numero1">1</label>
-        <label for="numero2">2</label>
-        <label for="numero3">3</label>
-        <label for="numero4">4</label>
-        <label for="numero5">5</label>
-        <label for="numero6">6</label>
-        <label for="numero7">7</label>
-        <label for="numero8">8</label>
-        <label for="numero9">9</label>
-        <label for="numero10">10</label>
-
-        <input type="radio" id="numero1" name="numero" value="Juan">
-        <input type="radio" id="numero2" name="numero" value="María">
-        <input type="radio" id="numero3" name="numero" value="Pedro">
-        <input type="radio" id="numero4" name="numero" value="Ana">
-        <input type="radio" id="numero5" name="numero" value="Luis">
-        <input type="radio" id="numero6" name="numero" value="Sofía">
-        <input type="radio" id="numero7" name="numero" value="Carlos">
-        <input type="radio" id="numero8" name="numero" value="Laura">
-        <input type="radio" id="numero9" name="numero" value="Miguel">
-        <input type="radio" id="numero10" name="numero" value="Isabel">
-
-        <button type="submit">Buscar</button>
-    </form>
-    <p id="resultado"></p>
-
     <style>
-        /* Ocultar los radios y labels */
-        input[type="radio"] {
-            display: none;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
         }
-
-        /* Estilo para los labels */
+        .container {
+            margin-top: 50px;
+        }
         label {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: #ccc;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-right: 5px;
-        }
-
-        /* Estilo para los radios seleccionados */
-        input[type="radio"]:checked + label {
-            background-color: #ffcc00;
+            font-weight: bold;
         }
     </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Buscar Nombre por Número</h1>
+        <form onsubmit="buscarNombre(); return false;">
+            <label for="numero">Ingrese un número:</label>
+            <input type="number" id="numero" name="numero" min="1" max="7">
+            <input type="submit" value="Buscar">
+        </form>
+        <p>
+            Nombre correspondiente:
+            <span id="nombreCorrespondiente"></span>
+        </p>
+    </div>
+
+    <script>
+        function buscarNombre() {
+            var numero = document.getElementById("numero").value;
+            var nombreCorrespondiente = "";
+
+            switch (numero) {
+                case "1":
+                    nombreCorrespondiente = "Génesis 48";
+                    break;
+                case "2":
+                    nombreCorrespondiente = "Génesis 49";
+                    break;
+                case "3":
+                    nombreCorrespondiente = "Génesis 50";
+                    break;
+                case "4":
+                    nombreCorrespondiente = "Éxodo 1";
+                    break;
+                case "5":
+                    nombreCorrespondiente = "Éxodo 2";
+                    break;
+                case "6":
+                    nombreCorrespondiente = "Éxodo 3";
+                    break;
+                case "7":
+                    nombreCorrespondiente = "Éxodo 4";
+                    break;
+                default:
+                    nombreCorrespondiente = "Número no válido";
+            }
+
+            document.getElementById("nombreCorrespondiente").textContent = nombreCorrespondiente;
+        }
+    </script>
 </body>
 </html>
